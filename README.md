@@ -2,7 +2,7 @@
 scrolls automatically to the desired category.
 ___
 
-![image](https://user-images.githubusercontent.com/105282006/213904227-63ace11e-7286-4cfe-93a1-0399823a0408.png)
+![Screenshot](https://user-images.githubusercontent.com/105282006/213903968-53ec4bc4-23da-460b-9bf3-b93fd636af57.png)
 
 
 
