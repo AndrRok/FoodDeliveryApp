@@ -28,6 +28,7 @@ class CategoriesHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        backgroundColor = Colors.mainBackGroundColor
     }
     
     
@@ -43,6 +44,7 @@ class CategoriesHeaderView: UIView {
     
     private func configureCollectionView(){
         addSubview(collectionView)
+        collectionView.backgroundColor = Colors.mainBackGroundColor
         collectionView.clipsToBounds = true
         collectionView.delegate                                     = self
         collectionView.dataSource                                   = self

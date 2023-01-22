@@ -19,8 +19,8 @@ protocol SendSalesDataToHeaderProtocol{
 
 class MenuVC: DataLoadingVC {
     
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createLayout(in: view))
-    private lazy var headerViewCategories           = CategoriesHeaderView(frame: .zero)
+    private lazy var collectionView         = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createLayout(in: view))
+    private lazy var headerViewCategories   = CategoriesHeaderView(frame: .zero)
     
     
     private var wholeFoodArray  : [Food] = []
@@ -35,41 +35,41 @@ class MenuVC: DataLoadingVC {
     private var isSelectingCategory = true
     private var neededIndexPath = IndexPath(row: 0, section: 0)
     
-
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-           
-        title = "Pizza App"
-        if  let navigationBar = navigationController?.navigationBar {
         
-            let appearance                      = UINavigationBarAppearance()
-            appearance.backgroundColor          = .systemBackground
-            appearance.shadowImage              = nil
-            appearance.shadowColor              = .clear
-            navigationBar.scrollEdgeAppearance  = appearance
-        }
-        
+        title = "Pizza"
+        self.navigationController?.navigationBar.titleTextAttributes =
+        [NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 27)!,
+         NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.backgroundColor = Colors.mainBackGroundColor
+        navigationController?.navigationBar.barTintColor    = Colors.mainBackGroundColor
     }
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.mainBackGroundColor
+        
         configureCollectionView()
         configureStickyHeader(space: Values.categoriesqHeaderHeight)
         getFood()
         headerViewCategories.delegateTwo = self
         self.delegateThree = headerViewCategories
-        collectionView.contentOffset = CGPoint(x: 0, y: 0)
-    
     }
-
+    
     
     private func configureCollectionView(){
         view.addSubview(collectionView)
-        
+        collectionView.backgroundColor = Colors.mainBackGroundColor
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsSelection = false
@@ -125,7 +125,7 @@ class MenuVC: DataLoadingVC {
         }
         
     }
-
+    
     private func sortArrayByCategory(){
         pizzaArray      = wholeFoodArray.filter {$0.foodType.contains("pizza")   }
         burgersArray    = wholeFoodArray.filter {$0.foodType.contains("burger")  }
@@ -148,126 +148,127 @@ class MenuVC: DataLoadingVC {
 //MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension MenuVC: UICollectionViewDelegate, UICollectionViewDataSource{
     
-        func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 6
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 6
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch (section) {
+        case 0://Empty
+            return 0
+            
+        case 1://Pizza
+            return pizzaArray.count
+            
+        case 2://Burgers
+            return burgersArray.count
+            
+        case 3://Dessert
+            return dessertArray.count
+            
+        case 4://Drink
+            return drinkArray.count
+            
+        case 5://Combo
+            return comboArray.count
+            
+        default:
+            return 0
         }
+    }
     
-
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            switch (section) {
-            case 0://Empty
-                return 0
     
-            case 1://Pizza
-                return pizzaArray.count
-    
-            case 2://Burgers
-                return burgersArray.count
-    
-            case 3://Dessert
-                return dessertArray.count
-    
-            case 4://Drink
-                return drinkArray.count
-    
-            case 5://Combo
-                return comboArray.count
-    
-            default:
-                return 0
-            }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodItemCell.reuseID, for: indexPath) as! FoodItemCell
+        
+        switch (indexPath.section) {
+            
+        case 1://Pizza
+            let pizza = pizzaArray[indexPath.row]
+            cell.set(foodItem: pizza)
+            
+        case 2://Burgers
+            let burger = burgersArray[indexPath.row]
+            cell.set(foodItem: burger)
+            
+        case 3://Dessert
+            let dessert = dessertArray[indexPath.row]
+            cell.set(foodItem: dessert)
+            
+        case 4://Drink
+            let drink = drinkArray[indexPath.row]
+            cell.set(foodItem: drink)
+            
+        case 5://Combo
+            let combo = comboArray[indexPath.row]
+            cell.set(foodItem: combo)
+            
+        default:
+            break
         }
-    
-    
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodItemCell.reuseID, for: indexPath) as! FoodItemCell
-    
-            switch (indexPath.section) {
-    
-            case 1://Pizza
-                let pizza = pizzaArray[indexPath.row]
-                cell.set(foodItem: pizza)
-    
-            case 2://Burgers
-                let burger = burgersArray[indexPath.row]
-                cell.set(foodItem: burger)
-    
-            case 3://Dessert
-                let dessert = dessertArray[indexPath.row]
-                cell.set(foodItem: dessert)
-    
-            case 4://Drink
-                let drink = drinkArray[indexPath.row]
-                cell.set(foodItem: drink)
-    
-            case 5://Combo
-                let combo = comboArray[indexPath.row]
-                cell.set(foodItem: combo)
-    
-            default:
-                break
-            }
-    
-            return cell
-        }
+        
+        return cell
+    }
 }
 
 
 
 extension MenuVC{
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    
-    
-            if kind == UICollectionView.elementKindSectionHeader {
-    
-                let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseID, for: indexPath) as! SectionHeader
-                sendDataDelegate = sectionHeader
-    
-                collectionView.bringSubviewToFront(sectionHeader)
-    
-    
-                switch (indexPath.section) {
-                case 0://Empty
-    
-                    sectionHeader.configureForZeroSection()
-    
-                case 1://Pizza
-                    sectionHeader.configureForOtherSecions()
-                    sectionHeader.label.text =  "Pizza"
-    
-                case 2://Burgers
-    
-                    sectionHeader.configureForOtherSecions()
-                    sectionHeader.label.text =  "Burgers"
-    
-                case 3://Dessert
-    
-                    sectionHeader.configureForOtherSecions()
-                    sectionHeader.label.text =  "Dessert"
-    
-                case 4://Drink
-    
-                    sectionHeader.configureForOtherSecions()
-                    sectionHeader.label.text =  "Drink"
-    
-                case 5://Combo
-    
-                    sectionHeader.configureForOtherSecions()
-                    sectionHeader.label.text =  "Combo"
-    
-                default:
-    
-                    break
-                }
-    
-                return sectionHeader
+        
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            
+            let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseID, for: indexPath) as! SectionHeader
+            sendDataDelegate = sectionHeader
+            sectionHeader.backgroundColor = Colors.mainBackGroundColor
+            
+            collectionView.bringSubviewToFront(sectionHeader)
+            
+            
+            switch (indexPath.section) {
+            case 0://Empty
                 
-            } else {
-    
-                return UICollectionReusableView()
+                sectionHeader.configureForZeroSection()
+                
+            case 1://Pizza
+                sectionHeader.configureForOtherSecions()
+                sectionHeader.label.text =  "Pizza"
+                
+            case 2://Burgers
+                
+                sectionHeader.configureForOtherSecions()
+                sectionHeader.label.text =  "Burgers"
+                
+            case 3://Dessert
+                
+                sectionHeader.configureForOtherSecions()
+                sectionHeader.label.text =  "Dessert"
+                
+            case 4://Drink
+                
+                sectionHeader.configureForOtherSecions()
+                sectionHeader.label.text =  "Drink"
+                
+            case 5://Combo
+                
+                sectionHeader.configureForOtherSecions()
+                sectionHeader.label.text =  "Combo"
+                
+            default:
+                
+                break
             }
+            
+            return sectionHeader
+            
+        } else {
+            
+            return UICollectionReusableView()
         }
+    }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -295,12 +296,12 @@ extension MenuVC{
             self.delegateThree?.scrollCategoriesMenuTo(rowOfHeader: fullyVisibleIndexPaths)
         } else {
             if fullyVisibleIndexPaths == neededIndexPath.row {
-
+                
                 isSelectingCategory = false
                 neededIndexPath = IndexPath(row: 0, section: 0)
             }
         }
-    
+        
     }
     
 }
@@ -324,7 +325,7 @@ extension MenuVC: ScrollToRowDetegateFromCollectionViewToTableView{
         }
         
         self.isSelectingCategory = isSelectingCategory
-    
+        
     }
     
 }

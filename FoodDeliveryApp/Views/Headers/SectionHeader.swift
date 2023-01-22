@@ -21,8 +21,7 @@ class SectionHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        
+        backgroundColor = Colors.mainBackGroundColor
     }
     
     required init?(coder: NSCoder) {
@@ -31,7 +30,6 @@ class SectionHeader: UICollectionReusableView {
     
     
     public func configureForOtherSecions(){
-        backgroundColor = .systemBackground
         collectionView.removeFromSuperview()
         configureLabel()
     }
@@ -48,6 +46,7 @@ class SectionHeader: UICollectionReusableView {
     private func configureLabel(){
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
+        //label.backgroundColor = Colors.mainBackGroundColor
         
         
         NSLayoutConstraint.activate([
@@ -61,6 +60,7 @@ class SectionHeader: UICollectionReusableView {
     
     private func configureCollectionView(){
         addSubview(collectionView)
+        collectionView.backgroundColor = Colors.mainBackGroundColor
         collectionView.delegate                                     = self
         collectionView.dataSource                                   = self
         collectionView.showsHorizontalScrollIndicator               = false

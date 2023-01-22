@@ -26,7 +26,7 @@ class NameLabel: UILabel {
     
     
     private func configure(){
-        textColor                                   = .label
+        textColor                                   = .black
         adjustsFontSizeToFitWidth                   = true
         //minimumScaleFactor                        = 0.9
         lineBreakMode                               = .byTruncatingTail

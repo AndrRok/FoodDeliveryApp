@@ -24,7 +24,7 @@ class DescriptionLabel: UILabel {
     }
     
     private func configure(){
-        textColor                                   = .secondaryLabel
+        textColor                                   = .gray
         adjustsFontSizeToFitWidth                   = true
         //minimumScaleFactor                        = 0.90
         lineBreakMode                               = .byTruncatingTail

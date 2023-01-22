@@ -11,9 +11,9 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().backgroundColor = .systemBackground
-        UITabBar.appearance().tintColor       = .systemPink
-        
+//        UITabBar.appearance().backgroundColor = Colors.mainBackGroundColor
+       UITabBar.appearance().tintColor       = .systemPink
+        UITabBar.appearance().barTintColor = Colors.mainBackGroundColor
         
         viewControllers                       = [createMenuNC(), createContactsNC(), createProfileNC(), createCartNC()]
     }

@@ -19,7 +19,7 @@
 		62640E63297C338000AB6D68 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E62297C338000AB6D68 /* UIViewController+Ext.swift */; };
 		62640E65297C339600AB6D68 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E64297C339600AB6D68 /* UIView+Ext.swift */; };
 		62640E67297C33B700AB6D68 /* CGRect+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E66297C33B700AB6D68 /* CGRect+Ext.swift */; };
-		62640E69297C33CE00AB6D68 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E68297C33CE00AB6D68 /* UITableView+Ext.swift */; };
+		62640E69297C33CE00AB6D68 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E68297C33CE00AB6D68 /* UICollectionView+Ext.swift */; };
 		62640E6B297C33F700AB6D68 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E6A297C33F700AB6D68 /* FoodItem.swift */; };
 		62640E6D297C341900AB6D68 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E6C297C341900AB6D68 /* NetworkManager.swift */; };
 		62640E77297C34E100AB6D68 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62640E76297C34E100AB6D68 /* TabBarController.swift */; };
@@ -76,7 +76,7 @@
 		62640E62297C338000AB6D68 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		62640E64297C339600AB6D68 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		62640E66297C33B700AB6D68 /* CGRect+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Ext.swift"; sourceTree = "<group>"; };
-		62640E68297C33CE00AB6D68 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		62640E68297C33CE00AB6D68 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		62640E6A297C33F700AB6D68 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		62640E6C297C341900AB6D68 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		62640E76297C34E100AB6D68 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 				62640E62297C338000AB6D68 /* UIViewController+Ext.swift */,
 				62640E64297C339600AB6D68 /* UIView+Ext.swift */,
 				62640E66297C33B700AB6D68 /* CGRect+Ext.swift */,
-				62640E68297C33CE00AB6D68 /* UITableView+Ext.swift */,
+				62640E68297C33CE00AB6D68 /* UICollectionView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -472,7 +472,7 @@
 				62640E95297C37F700AB6D68 /* ContactsVC.swift in Sources */,
 				62640E93297C37B300AB6D68 /* MenuVC.swift in Sources */,
 				62640E97297C380600AB6D68 /* ProfileVC.swift in Sources */,
-				62640E69297C33CE00AB6D68 /* UITableView+Ext.swift in Sources */,
+				62640E69297C33CE00AB6D68 /* UICollectionView+Ext.swift in Sources */,
 				62640E5F297BF4D800AB6D68 /* UIHelper.swift in Sources */,
 				62640E61297C334100AB6D68 /* Constants.swift in Sources */,
 				62640E8F297C36F600AB6D68 /* DataLoadingVC.swift in Sources */,

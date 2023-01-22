@@ -26,11 +26,11 @@ class PriceLabel: UILabel {
     
     
     private func configure(){
-        textColor                                   = .label
+        textColor                                   = .black
         lineBreakMode                               = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints   = false
         layer.cornerRadius                          = 10
-        backgroundColor                             = .systemGray4
+        backgroundColor                             = .systemGray
         layer.masksToBounds                         = true
         numberOfLines                               = 1
         adjustsFontSizeToFitWidth                   = true
