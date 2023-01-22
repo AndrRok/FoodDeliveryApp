@@ -47,13 +47,9 @@ class MenuVC: DataLoadingVC {
          NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.backgroundColor = Colors.mainBackGroundColor
         navigationController?.navigationBar.barTintColor    = Colors.mainBackGroundColor
+
     }
-    
-    
-    
-    
-    
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
